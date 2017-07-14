@@ -9,7 +9,7 @@ use DOMXPath;
 /**
  * The ORDER class provides the functioanallity to create a XML, which is validatable with the MDXI.xsd
  *
- * Class MPay24Order
+ * Class Mpay24Order
  * @package    Mpay24
  *
  * @author     mPAY24 GmbH <support@mpay24.com>
@@ -63,7 +63,7 @@ class Mpay24Order
      *                       The first argument must be a positive integer (will be used as a index)
      *                       The second argument is optional and would be used as value for the DOMNode
      *
-     * @return MPay24Order
+     * @return Mpay24Order
      */
     public function __call($method, $args)
     {
@@ -104,7 +104,7 @@ class Mpay24Order
             $qry   = $xpath->query($name, $this->node);
 
             if ($qry->length > 0) {
-                return new MPay24Order($this->doc, $qry->item(0));
+                return new Mpay24Order($this->doc, $qry->item(0));
             } else {
                 if (array_key_exists(1, $args)) {
                     $value = $args[1];
@@ -133,7 +133,7 @@ class Mpay24Order
 
                 $node = $this->node->appendChild($node);
 
-                return new MPay24Order($this->doc, $node);
+                return new Mpay24Order($this->doc, $node);
             }
         }
     }
@@ -143,7 +143,7 @@ class Mpay24Order
      *
      * @param string $name The name of the method, which is called for the Item-Object
      *
-     * @return MPay24Order
+     * @return Mpay24Order
      */
     public function __get($name)
     {
@@ -151,12 +151,12 @@ class Mpay24Order
         $qry   = $xpath->query($name, $this->node);
 
         if ($qry->length > 0) {
-            return new MPay24Order($this->doc, $qry->item(0));
+            return new Mpay24Order($this->doc, $qry->item(0));
         } else {
             $node = $this->doc->createElement($name);
             $node = $this->node->appendChild($node);
 
-            return new MPay24Order($this->doc, $node);
+            return new Mpay24Order($this->doc, $node);
         }
     }
 
